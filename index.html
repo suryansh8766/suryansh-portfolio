@@ -14,32 +14,44 @@
     body {
       margin: 0;
       font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+      background: linear-gradient(-45deg, #020617, #0f172a, #1e293b, #3b0764);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
       color: #fff;
       text-align: center;
-      padding: 0 15px;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     header {
-      padding: 70px 0 30px;
+      padding: 70px 15px 30px;
       animation: fadeIn 1s ease-out;
     }
 
     h1 {
       font-family: "Orbitron", sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: #38bdf8;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       margin-bottom: 10px;
+      text-shadow: 0 0 10px #38bdf855;
     }
 
-    header p {
+    #typing {
       color: #a5b4fc;
-      font-size: 1rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      height: 24px;
     }
 
     .contact {
-      margin-top: 15px;
+      margin-top: 10px;
       font-size: 1rem;
     }
 
@@ -59,12 +71,14 @@
       text-decoration: none;
       display: inline-block;
       transition: 0.3s ease;
-      box-shadow: 0 0 10px #25d36655;
+      box-shadow: 0 0 15px #25d36655;
+      animation: pulse 2s infinite;
     }
 
-    .whatsapp-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #25d366;
+    @keyframes pulse {
+      0% { box-shadow: 0 0 10px #25d36655; }
+      50% { box-shadow: 0 0 25px #25d366aa; }
+      100% { box-shadow: 0 0 10px #25d36655; }
     }
 
     section {
@@ -77,33 +91,32 @@
       letter-spacing: 1px;
       margin-top: 60px;
       margin-bottom: 25px;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
+      text-shadow: 0 0 10px #7dd3fc55;
     }
 
-    .services,
-    .reviews {
+    .services, .reviews {
       margin: 0 auto 60px;
       max-width: 1000px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 25px;
     }
 
-    .service,
-    .review {
+    .service, .review {
       backdrop-filter: blur(12px);
       background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
-      padding: 22px;
+      padding: 25px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: all 0.3s ease;
+      transform-style: preserve-3d;
     }
 
-    .service:hover,
-    .review:hover {
+    .service:hover, .review:hover {
       background: rgba(56, 189, 248, 0.2);
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
+      transform: translateY(-6px) rotateX(5deg);
+      box-shadow: 0 4px 25px rgba(56, 189, 248, 0.25);
     }
 
     .service h3 {
@@ -124,11 +137,10 @@
     }
 
     footer {
-      margin: 50px 0 20px;
+      margin: 60px 0 20px;
       color: #94a3b8;
       font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      padding-top: 10px;
+      padding-top: 15px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
@@ -146,11 +158,13 @@
 <body>
   <header>
     <h1>Suryansh Singh Bhardwaj</h1>
-    <p>Creative Editor • Designer • Developer</p>
+    <div id="typing"></div>
+
     <div class="contact">
       📞 WhatsApp: <a href="https://wa.me/918766308185" target="_blank">+91 8766308185</a><br />
       📸 Instagram: <a href="https://instagram.com/suryanxh.edit" target="_blank">@suryanxh.edit</a>
     </div>
+
     <a class="whatsapp-btn" href="https://wa.me/918766308185?text=Hi%20Suryansh!%20I%20want%20to%20know%20about%20your%20services." target="_blank">
       Message on WhatsApp 💬
     </a>
@@ -189,5 +203,38 @@
   <footer>
     © 2025 Suryansh Singh Bhardwaj — All Rights Reserved
   </footer>
+
+  <script>
+    // Typing animation
+    const textArray = ["Creative Editor", "Designer", "Developer", "Video Editor"];
+    let typingElement = document.getElementById("typing");
+    let textIndex = 0;
+    let charIndex = 0;
+
+    function typeEffect() {
+      if (charIndex < textArray[textIndex].length) {
+        typingElement.innerHTML += textArray[textIndex].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 100);
+      } else {
+        setTimeout(eraseEffect, 2000);
+      }
+    }
+
+    function eraseEffect() {
+      if (charIndex > 0) {
+        typingElement.innerHTML = textArray[textIndex].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseEffect, 50);
+      } else {
+        textIndex = (textIndex + 1) % textArray.length;
+        setTimeout(typeEffect, 500);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      setTimeout(typeEffect, 1000);
+    });
+  </script>
 </body>
 </html>
