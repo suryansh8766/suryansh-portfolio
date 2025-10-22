@@ -1,86 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suryansh Singh Bhardwaj - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Orbitron:wght@700&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #0f172a, #020617);
-      color: white;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e293b 100%);
+      color: #fff;
       text-align: center;
       padding: 0 15px;
     }
+
     header {
-      padding: 50px 0 20px;
+      padding: 70px 0 30px;
+      animation: fadeIn 1s ease-out;
     }
-    header h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
+
+    h1 {
+      font-family: "Orbitron", sans-serif;
+      font-size: 2.2rem;
       color: #38bdf8;
       letter-spacing: 1px;
+      margin-bottom: 10px;
     }
+
     header p {
       color: #a5b4fc;
       font-size: 1rem;
     }
+
     .contact {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 1rem;
     }
+
     .contact a {
       color: #38bdf8;
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .services {
-      margin: 40px auto;
-      max-width: 800px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 20px;
-    }
-    .service {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 20px;
-      transition: 0.3s;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .service:hover {
-      background: linear-gradient(135deg, #38bdf8, #7c3aed);
-      transform: translateY(-5px);
-    }
-
-    .service h3 {
-      margin: 0;
-      color: #fff;
-      font-size: 1rem;
-    }
-
-    .reviews {
-      margin: 60px auto;
-      max-width: 900px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-    .review {
-      background: rgba(255, 255, 255, 0.07);
-      border-radius: 12px;
-      padding: 15px;
-      font-size: 0.9rem;
-      color: #cbd5e1;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-    footer {
-      margin: 40px 0 20px;
-      color: #94a3b8;
-      font-size: 0.85rem;
+      font-weight: 600;
     }
 
     .whatsapp-btn {
@@ -88,14 +54,92 @@
       background: #25d366;
       color: #000;
       font-weight: 700;
-      padding: 12px 24px;
+      padding: 12px 28px;
       border-radius: 30px;
       text-decoration: none;
       display: inline-block;
-      transition: 0.3s;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #25d36655;
     }
+
     .whatsapp-btn:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 20px #25d366;
+    }
+
+    section {
+      animation: fadeInUp 1s ease-out;
+    }
+
+    h2 {
+      color: #7dd3fc;
+      font-family: "Orbitron", sans-serif;
+      letter-spacing: 1px;
+      margin-top: 60px;
+      margin-bottom: 25px;
+      font-size: 1.6rem;
+    }
+
+    .services,
+    .reviews {
+      margin: 0 auto 60px;
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 25px;
+    }
+
+    .service,
+    .review {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .service:hover,
+    .review:hover {
+      background: rgba(56, 189, 248, 0.2);
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.2);
+    }
+
+    .service h3 {
+      margin: 0;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .review {
+      font-size: 0.9rem;
+      color: #d1d5db;
+      text-align: left;
+    }
+
+    .review strong {
+      color: #7dd3fc;
+    }
+
+    footer {
+      margin: 50px 0 20px;
+      color: #94a3b8;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -104,7 +148,7 @@
     <h1>Suryansh Singh Bhardwaj</h1>
     <p>Creative Editor • Designer • Developer</p>
     <div class="contact">
-      📞 WhatsApp: <a href="https://wa.me/918766308185" target="_blank">+91 8766308185</a><br>
+      📞 WhatsApp: <a href="https://wa.me/918766308185" target="_blank">+91 8766308185</a><br />
       📸 Instagram: <a href="https://instagram.com/suryanxh.edit" target="_blank">@suryanxh.edit</a>
     </div>
     <a class="whatsapp-btn" href="https://wa.me/918766308185?text=Hi%20Suryansh!%20I%20want%20to%20know%20about%20your%20services." target="_blank">
@@ -113,7 +157,7 @@
   </header>
 
   <section>
-    <h2 style="color:#7dd3fc; font-family:'Orbitron', sans-serif; letter-spacing:1px;">My Services</h2>
+    <h2>My Services</h2>
     <div class="services">
       <div class="service"><h3>Web Development</h3></div>
       <div class="service"><h3>Video Editing</h3></div>
@@ -131,7 +175,7 @@
   </section>
 
   <section>
-    <h2 style="color:#7dd3fc; font-family:'Orbitron', sans-serif; letter-spacing:1px;">Client Reviews</h2>
+    <h2>Client Reviews</h2>
     <div class="reviews">
       <div class="review"><strong>Aditya Singh:</strong> Very nice editor, totally professional!</div>
       <div class="review"><strong>Riya Sharma:</strong> Super creative, loved the work!</div>
